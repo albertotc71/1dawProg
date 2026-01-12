@@ -221,4 +221,113 @@ public class LibreriaClase {
 		} 
 	} 
 	
+	
+	/**
+	 * Metodo de ordenacion por shell
+	 * @param array
+	 */
+	public static void ordenarShell(int [] array) {
+		int sw, i, salto, aux, n; 
+		n = array.length-1;
+		salto = n;
+		while (salto != 1) {
+			sw = 1;
+			salto = salto/2;
+			while (sw!=0) {
+				i = 0; 
+				sw = 0;
+				while (i <= (n-salto)) {
+					if (array[i] > array[i+salto]) {
+						aux = array[i+salto];
+						array[i+salto] = array[i];
+						array[i]= aux;
+						sw = 1;
+					}
+					i++;
+				} //End while salto
+			}//End while switch
+		}//End while salto 
+	}
+	
+	
+	/**
+	 * Metodo para desordenar el array
+	 */
+	public static void desordenarArray(int [] array) {
+		int pos1=0, pos2=1;
+
+		for(int i=0;i<array.length;i++) {
+			pos2=(int)(Math.random()*array.length-1);
+			pos1=(int)(Math.random()*array.length-1);
+			array[pos1]=array[pos2];
+			array[pos2]=array[pos1];
+		}
+	}
+	
+	/**
+	 * Metodo que inserta un numero en una posicion del array
+	 * @param array
+	 * @param posicion
+	 * @param sc
+	 * @return
+	 */
+	public static boolean insertaPosicion(int [] array, int posicion, int num) {
+		boolean pos;
+		if(posicion>=array.length || posicion<0)
+			pos=false;
+		else {
+			pos=true;
+		for(int i=array.length;i<=posicion;i--) {
+			array[i]= array[i-1];
+		}
+		array[posicion]=num;
+		}
+		return pos;
+	}
+	
+	/**
+	 * Metodo que borra por la posicion que le llega por teclado
+	 * @param array
+	 * @param sc
+	 * @return
+	 */
+	public static boolean borraPosicion(int [] array, int posicion) {
+		boolean pos;
+		posicion--;
+		if(posicion>=array.length)
+			pos=false;
+		else {
+			pos=true;
+		for(int i=posicion;i<array.length-1;i++) {
+			array[i]=array[i-1];
+		}
+		array[array.length-1] = 0;}
+		return pos;
+	}
+	
+	/**
+	 * Metodo para borrar por algun numero que introduzca por teclado
+	 * @param array
+	 * @param sc
+	 * @return
+	 */
+	public static boolean borrarOcurrencia(int [] array, int num) {
+		boolean ocurrencia = false;
+		borraPosicion(array, busquedaLineal(array, num));
+		return ocurrencia;
+	}
+	
+	
+	/**
+	 * Metodo que borra todas las ocurrencias 
+	 * @param array
+	 * @param num
+	 */
+	public static void borrarTodaOcurrencia(int [] array, int num) {
+		while (LibreriaClase.borrarOcurrencia(array, num));
+	}
+	
+	
+	
+	
 }

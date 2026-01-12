@@ -192,6 +192,108 @@ public class LibreriaObjeto {
 	} 
 	
 	
+	/**
+	 * Metodo de ordenacion por shell
+	 * @param array
+	 */
+	public void ordenarShell() {
+		int sw, i, salto, aux, n; 
+		n = array.length-1;
+		salto = n;
+		while (salto != 1) {
+			sw = 1;
+			salto = salto/2;
+			while (sw!=0) {
+				i = 0; 
+				sw = 0;
+				while (i <= (n-salto)) {
+					if (array[i] > array[i+salto]) {
+						aux = array[i+salto];
+						array[i+salto] = array[i];
+						array[i]= aux;
+						sw = 1;
+					}
+					i++;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Metodo para desordenar el array
+	 */
+	public void desordenarArray() {
+		int pos1=0, pos2=1, aux;
+		for(int i=0;i<array.length;i++) {
+			pos2=(int)(Math.random()*array.length-1);
+			pos1=(int)(Math.random()*array.length-1);
+		aux=array[pos1];
+		array[pos1]=array[pos2];
+		array[pos2]=aux;
+		}
+	}
+	
+	/**
+	 * Metodo que inserta un numero en una posicion del array
+	 * @param posicion
+	 * @param sc
+	 * @return
+	 */
+	public boolean insertaPosicion(int num, int posicion) {
+		boolean pos;
+		if(posicion>=array.length || posicion<0)
+			pos=false;
+		else {
+			pos=true;
+		
+		for(int i=array.length;i<=posicion;i--) {
+			array[i]= array[i-1];
+		}
+		array[posicion]=num;
+		}
+		return pos;
+	}
+	
+	/**
+	 * Metodo que borra por la posicion que le llega por teclado
+	 * @param posicion
+	 * @return
+	 */
+	public boolean borraPosicion(int posicion) {
+		boolean pos;
+		if(posicion>=array.length || posicion<0)
+			pos=false;
+		else {
+			pos=true;
+		for(int i=posicion;i<array.length-1;i++) {
+			array[i]=array[i+1];
+		}
+		array[array.length-1] = 0;
+		}
+		return pos;
+	}
+	
+	/**
+	 * Metodo para borrar por algun numero que introduzca por teclado
+	 * @param sc
+	 * @return
+	 */
+	public boolean borrarOcurrencia(int num) {
+		boolean ocurrencia = false;
+		borraPosicion(busquedaLineal(num));
+		return ocurrencia;
+	}
+	
+	/**
+	 * Metodo para borrar todas las apariciones de un elemento
+	 * @param num
+	 * @return
+	 */
+	public void borrarTodaOcurrencia(int num) {
+		while (borrarOcurrencia(num));
+	}
+	
+	
 	
 	/**
 	 * Redefinicion del metodo toString

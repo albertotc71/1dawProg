@@ -145,7 +145,7 @@ public class LibreriaClase {
 	 * @param num
 	 * @return
 	 */
-	public static int busquedaBinaria(int array[], int num) {
+	public static int busquedaDic(int array[], int num) {
 		boolean sw = false;
 		int mitad, primero = 0, ultimo = array.length-1;
 		do{
@@ -293,15 +293,15 @@ public class LibreriaClase {
 	 */
 	public static boolean borraPosicion(int [] array, int posicion) {
 		boolean pos;
-		posicion--;
-		if(posicion>=array.length)
+		if(posicion>=array.length || posicion<0)
 			pos=false;
 		else {
 			pos=true;
 		for(int i=posicion;i<array.length-1;i++) {
-			array[i]=array[i-1];
+			array[i]=array[i+1];
 		}
-		array[array.length-1] = 0;}
+		array[array.length-1] = 0;
+		}
 		return pos;
 	}
 	

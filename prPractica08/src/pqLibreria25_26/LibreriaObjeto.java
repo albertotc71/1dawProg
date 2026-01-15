@@ -193,6 +193,44 @@ public class LibreriaObjeto {
 	
 	
 	/**
+	 * Metodo de ordenacion por insercion
+	 * @param array
+	 */
+	public void ordenarInsercion() {
+		int j, aux;
+		for (int i = 1; i<(array.length); i++) {
+			aux = array[i];
+			j = i-1;
+			while ((j >= 0) && (array[j] > aux)) {
+				array[j+1] = array[j];
+				j--;
+			}
+			array[j+1] = aux;
+		}
+	}
+	
+	
+	/**
+	 * Metodo de ordenacion por seleccion
+	 * @param array
+	 */
+	public void ordenarSeleccion(){
+		int pos_menor, menor;
+		for(int i=0; i<=array.length-2; i++){
+			pos_menor=i;
+			menor = array[i];
+			for(int j= i+1; j<=array.length-1; j++){
+				if(array[j]<menor){
+					pos_menor = j;
+					menor = array[j];
+				}
+			}
+			array[pos_menor]=array[i];
+			array[i]=menor;
+		}
+	}
+	
+	/**
 	 * Metodo de ordenacion por shell
 	 * @param array
 	 */

@@ -77,21 +77,6 @@ public class LibreriaClase {
 	}
 	
 	/**
-	 * Metodo que devuelve el elemento maximo del array
-	 * @param array
-	 * @return
-	 */
-	public static int elemMax(int array[]) {
-		int max = array[0];
-		for(int i=0;i<array.length;i++) {
-			if(array[i]>max)
-				max=array[i];
-		}
-		
-		return max;
-	}
-	
-	/**
 	 * Metodo que devuelve el elemento minimo
 	 * @param array
 	 * @return
@@ -145,7 +130,7 @@ public class LibreriaClase {
 	 * @param num
 	 * @return
 	 */
-	public static int busquedaDic(int array[], int num) {
+	public static int busquedaBinaria(int array[], int num) {
 		boolean sw = false;
 		int mitad, primero = 0, ultimo = array.length-1;
 		do{
@@ -219,7 +204,8 @@ public class LibreriaClase {
 			}  
 			array[j+1] = aux; 
 		} 
-	} 
+	}
+	
 	
 	
 	/**
@@ -293,15 +279,15 @@ public class LibreriaClase {
 	 */
 	public static boolean borraPosicion(int [] array, int posicion) {
 		boolean pos;
-		if(posicion>=array.length || posicion<0)
+		posicion--;
+		if(posicion>=array.length)
 			pos=false;
 		else {
 			pos=true;
 		for(int i=posicion;i<array.length-1;i++) {
-			array[i]=array[i+1];
+			array[i]=array[i-1];
 		}
-		array[array.length-1] = 0;
-		}
+		array[array.length-1] = 0;}
 		return pos;
 	}
 	
@@ -326,8 +312,6 @@ public class LibreriaClase {
 	public static void borrarTodaOcurrencia(int [] array, int num) {
 		while (LibreriaClase.borrarOcurrencia(array, num));
 	}
-	
-	
 	
 	
 }

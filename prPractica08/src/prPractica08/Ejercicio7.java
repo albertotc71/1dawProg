@@ -8,25 +8,25 @@ package prPractica08;
 public class Ejercicio7 {
 
 	public static void main(String[] args) {
-		
+
 		int [] array = new int[50];
 		int numero=0;
-		
+
 		for(int i=0;i<array.length;i++) {
-			
-			
+
+
 			do {
 				numero = (int)((Math.random()*100)+1); 
 			}
 			while(existe(array, numero, i));
-			
+
 			array[i]=numero;
 			System.out.print(array[i]+" ");
 		}
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Metodo que comprueba si un numero esta repetido
 	 * @param array
